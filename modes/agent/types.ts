@@ -18,8 +18,8 @@ export interface ActionLog {
     details: {
         before?: string;
         after?: string;
-        toolname?: string;
-        toolresult?: string;
+        toolName?: string;
+        toolResult?: string;
         error?: string;
         command?: string;
     };
