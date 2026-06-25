@@ -1,6 +1,7 @@
 import chalk from "chalk";
 import {select, isCancel} from "@clack/prompts";
 import { extractMessage } from "@pinecone-database/pinecone/dist/errors";
+import { runAgentMode } from "./agent/orchestrator";
 
 
 
@@ -21,7 +22,7 @@ export async function runCliMode(){
         }
 
         if(mode === "agent"){
-            console.log("agent");
+            await runAgentMode();
         }
 
         if(mode === "ask"){
