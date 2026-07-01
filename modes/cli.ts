@@ -1,8 +1,9 @@
 import chalk from "chalk";
 import {select, isCancel} from "@clack/prompts";
 import { extractMessage } from "@pinecone-database/pinecone/dist/errors";
-import { runAgentMode } from "./agent/orchestrator";
-import { runAskMode } from "./ask/orchestrator";
+import { runAgentMode } from "./agent/orchestrator.ts";
+import { runAskMode } from "./ask/orchestrator.ts";
+import { runPlanMode } from "./plan/orchestrator.ts";
 
 
 
@@ -31,7 +32,7 @@ export async function runCliMode(){
         }
 
         if(mode === "plan"){
-            console.log("plan");
+            await runPlanMode();
         }
 
         if(mode !== "agent" && mode !== "ask" && mode !== "plan"){
