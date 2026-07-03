@@ -11,6 +11,7 @@ import { renderTerminalMarkdown } from "../../tui/terminal-md.ts";
 import { generatePlan } from "./planner.ts";
 import { printPlan, selectSteps } from "./selection.ts";
 import type { PlanStep } from "./types.ts";
+import { createWebTools } from "./web-tools.ts";
 
 
 function stepPrompt(goal: string, step: PlanStep): string {
@@ -42,8 +43,9 @@ export async function runPlanMode(): Promise<void>{
 
     // todo: add web tools 
     const tools = {
-        ...createAgentTools(executor)
-    }
+        ...createAgentTools(executor),
+        ...createWebTools(tracker)
+    };
 
     for(const step of selected){
         console.log(chalk.bold(`\n🔧 ${step.title}\n`));
