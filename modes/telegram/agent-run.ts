@@ -8,6 +8,7 @@ import { defaultAgentConfig, type AgentConfig } from "../agent/types.ts";
 import { createWebTools } from "../plan/web-tools.ts";
 import type { Plan, PlanStep } from "../plan/types.ts";
 import { replyMd } from "./text.ts";
+import { finishOrApprove } from "./approval-session.ts";
 
 
 function readOnlyConfig(): AgentConfig{
@@ -84,7 +85,7 @@ export async function runAgent(ctx: { reply: (t: string, o?: object) => Promise<
     });
     const { text } = await agent.generate({ prompt: goal });
     if(text?.trim()) await replyMd(ctx, text.trim());
-    // await finishOrApprove(ctx, chatId, tracker, executor, "✅ done. no file changes were needed");
+    await finishOrApprove(ctx, chatId, tracker, executor, "✅ done. no file changes were needed");
 }
 
 export async function runPlanSteps(
@@ -109,5 +110,5 @@ export async function runPlanSteps(
         if(text?.trim()) await replyMd(ctx, text.trim());
     }
 
-    // await finishOrApprove(ctx, chatId, tracker, executor, "✅ all steps done. no file changes needed.");
+    await finishOrApprove(ctx, chatId, tracker, executor, "✅ all steps done. no file changes needed.");
 }

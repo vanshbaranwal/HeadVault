@@ -20,7 +20,7 @@ It provides a centralized system through scattered notes, messages and apps.
 - store personal information
 - retrieve stored information
 - user specific memory system
-- ai based intent detection 
+- ai based intent detection
 
 ---
 
@@ -28,9 +28,11 @@ It provides a centralized system through scattered notes, messages and apps.
 - backend: python (fastapi)
 - database: postgreSQL
 - frontend: html, css & javascript
-- ai integration: openai api 
+- ai integration: openai api
 
 ---
 
 ## status 
 In development phase...
+
+hello from telegram
